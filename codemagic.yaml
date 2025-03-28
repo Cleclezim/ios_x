@@ -6,7 +6,7 @@ workflows:
     environment:
       ios_signing:
         bundle_identifier: "br.com.xuria.app" # Substitua pelo ID do seu app
-        distribution_type: "app-store" # Ou "ad-hoc", "development", dependendo do seu caso
+        distribution_type: "app_store" # Pode ser 'ad_hoc', 'app_store', 'development', 'enterprise'
       vars:
         XCODE_WORKSPACE: "xurIA.xcworkspace" # Altere se necessário
         XCODE_SCHEME: "xurIA"
