@@ -1,0 +1,32 @@
+workflows:
+  ios-app:
+    name: iOS App Build
+    instance_type: mac_mini_m1
+    max_build_duration: 60
+    environment:
+      ios_signing:
+        bundle_identifier: "br.com.xuria.app" # Substitua pelo ID do seu app
+      vars:
+        XCODE_WORKSPACE: "xurIA.xcworkspace" # Altere se necessário
+        XCODE_SCHEME: "xurIA"
+    scripts:
+      - name: Instalar dependências
+        script: |
+          cd ios
+          pod install
+      - name: Compilar o app
+        script: |
+          xcodebuild -workspace "$XCODE_WORKSPACE" \
+          -scheme "$XCODE_SCHEME" \
+          -sdk iphoneos \
+          -configuration Release \
+          -archivePath build/App.xcarchive \
+          archive
+      - name: Exportar o IPA
+        script: |
+          xcodebuild -exportArchive \
+          -archivePath build/App.xcarchive \
+          -exportOptionsPlist ios/ExportOptions.plist \
+          -exportPath build
+    artifacts:
+      - build/*.ipa  
