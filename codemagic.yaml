@@ -5,7 +5,7 @@ workflows:
     max_build_duration: 60
     environment:
       ios_signing:
-        bundle_identifier: "br.com.xuria.app" # Substitua pelo ID do seu app
+        bundle_identifier: "com.mycompany.xuria" # Substitua pelo ID do seu app
         distribution_type: "app_store" # Pode ser 'ad_hoc', 'app_store', 'development', 'enterprise'
       vars:
         XCODE_WORKSPACE: "xurIA.xcworkspace" # Altere se necessário
